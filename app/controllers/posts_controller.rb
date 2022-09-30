@@ -11,4 +11,8 @@ class PostsController < ApplicationController
     Post.create(content: params[:post][:content])
     redirect_to new_post_path
   end
+
+  def show
+    params[:id]
+  end
 end
