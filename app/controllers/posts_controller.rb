@@ -12,10 +12,14 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(content: params[:post][:content])
-    if @post.save
-      redirect_to posts_path, notice: "ツイート投稿完了！"
-    else
+    if params[:back]
       render :new
+    else
+      if @post.save
+        redirect_to posts_path, notice: "ツイート投稿完了！"
+      else
+        render :new
+      end
     end
   end
 
