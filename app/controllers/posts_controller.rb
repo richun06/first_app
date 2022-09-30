@@ -48,6 +48,7 @@ class PostsController < ApplicationController
 
   def confirm
     @post = Post.new(content: params[:post][:content])
+    render :new if @post.invalid?
   end
 
 end
