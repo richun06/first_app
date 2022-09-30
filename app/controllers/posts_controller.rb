@@ -42,4 +42,8 @@ class PostsController < ApplicationController
     redirect_to posts_path, notice: "ツイートを削除しました"
   end
 
+  def confirm
+    @post = Post.new(content: params[:post][:content])
+  end
+
 end
