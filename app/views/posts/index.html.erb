@@ -1,21 +1,27 @@
-<header>
-  <h1>Twitterクローン</h1>
-
-</header>
-<p><%= notice %></p>
-<table>
-  <tr>
-    <th>Content</th>
-  </tr>
-
-  <% @posts.each do |post| %>
+<body>
+  <header>
+    <h1>Twitterクローン</h1>
+  </header>
+  <p class="notice"><%= notice %></p>
+  <table>
     <tr>
-      <td><%= post.content %></td>
-
-      <td><%= link_to '詳細を確認する', post_path(post.id) %></td>
-      <td><%= link_to "ツイートを編集する", edit_post_path(post.id), data: { confirm: '本当に編集していいですか？' } %></td>
-      <td><%= link_to 'ツイートを削除する', post_path(post.id), method: :delete, data: { confirm: '本当に削除していいですか？' } %></td>
+      <th>Content</th>
     </tr>
-  <% end %>
-</table>
-<%= link_to '新しくツイートを投稿する', new_post_path %>
+
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= post.content %></td>
+
+        <td><%= link_to '詳細を確認する', post_path(post.id) %></td>
+        <td><%= link_to "ツイートを編集する", edit_post_path(post.id), data: { confirm: '本当に編集していいですか？' } %></td>
+        <td><%= link_to 'ツイートを削除する', post_path(post.id), method: :delete, data: { confirm: '本当に削除していいですか？' } %></td>
+      </tr>
+    <% end %>
+  </table>
+  <div class = "new_button">
+    <%= link_to '新しくツイートを投稿する', new_post_path %>
+  </div>
+  <footer>
+    <p>テスト</p>
+  </footer>
+</body>
