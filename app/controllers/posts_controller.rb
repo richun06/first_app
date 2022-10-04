@@ -29,15 +29,11 @@ class PostsController < ApplicationController
   end
 
   def update
-    if @post.update(content: params[:post][:content])
+    if @post.update(post_params)
       redirect_to posts_path, notice: "ツイートを編集しました"
     else
       render :edit
     end
-  end
-
-  def set_post
-    @post = Post.find(params[:id])
   end
 
   def destroy
@@ -46,8 +42,18 @@ class PostsController < ApplicationController
   end
 
   def confirm
-    @post = Post.new(content: params[:post][:content])
+    @post = Post.new(post_params)
     render :new if @post.invalid?
+  end
+
+  private
+
+  def blog_params
+    params.require(:post).permit(:title, :content)
+  end
+
+  def set_post
+    @post = Post.find(params[:id])
   end
 
 end
